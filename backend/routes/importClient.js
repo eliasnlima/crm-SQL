@@ -2,7 +2,7 @@ import express from 'express'
 import multer from 'multer'
 import csvParser from 'csv-parser'
 import fs from 'fs'
-import Client from '../models/Client.js'
+//import Client from '../models/Client.js'
 import authMiddleware from '../middlewares/auth.js'
 import iconv from 'iconv-lite'
 

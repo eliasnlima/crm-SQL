@@ -1,28 +1,32 @@
-import Client from "../models/Client.js"
-import Action from "../models/Action.js"
-
+import { create } from "../models/Client.js"
 
 class ClientController{
 
     async show(req, res){
-        
-        const { userId } = req.userId
 
-        const clients = await Client.find({ user: req.userId})
-
-        return res.json({clients})
 
     }
 
     async store(req, res){
+        
+        try {
+            const { nome, cnpj, fone } = req.body
 
-        const { nome, CNPJ, fone, email, status, codigo } = req.body
-        const user = req.userId
+            const clientData = {
+                nome,
+                cnpj,
+                user_id: req.userId,
+                fone
+            }
 
-        const client = await Client.create({ nome, CNPJ, user, fone, email, status, codigo })
+            const newClient = await create(clientData)
 
-        return res.status(201).json({ message: "Cliente cadastrado com sucesso", client})
+            return res.status(201).json({ message: "Cliente cadastrado com sucesso", newClient})
 
+        } catch (err){
+            console.error('Erro ao cadastrar cliente!', err)
+        }
+        
     }
 
     async delete(req, res){

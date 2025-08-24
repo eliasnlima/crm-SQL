@@ -16,8 +16,9 @@ routes.post('/login', SessionController.login)
 
 routes.use(auth)
 
-routes.use(importClientsRoutes)
 routes.post('/client', ClientController.store)
+
+routes.use(importClientsRoutes)
 routes.delete('/client/remove', ClientController.delete)
 routes.get('/clients', ClientController.show)
 routes.put('/client/:clientId', ClientController.update)

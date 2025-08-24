@@ -1,33 +1,18 @@
+import pool from '../config/db.js'
+import dotenv from 'dotenv'
 
-import { Schema, model } from "mongoose";
+dotenv.config()
 
-const ClientSchema = new Schema({
-    codigo: String,
-    nome: { type: String, required: true},
-    CNPJ: { type: String, unique: true, required: true },
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
-    fone: String,
-    email: String,
-    status: {
-        type: String,
-        enum: ["Prospecção", "Em negociação", "Cliente novo", "Acompanhamento", "Inativo", "Reativado", "Tirar da carteira", "Vazio"],
-        default: 'Vazio'
-    },
-    proxInt: {
-        type: Date,
-        default: null
-    },
-    grupoEconomico: {
-        type: String,
-        default: null
-    },
-    nomeGrupo: {
-        type: String,
-        default: null
+export async function create(client) {
+    
+    try {
+        const res = await pool.query('INSERT INTO clients (nome, cnpj, user_id, fone) VALUES ($1, $2, $3, $4) RETURNING *', [client.nome, client.cnpj, client.user_id, client.fone])
+
+        return res.rows[0];
+    } catch(err){
+        console.error('Erro ao criar cliente novo!', err)
+        throw err;
     }
-})
 
-export default model("Client", ClientSchema)
+
+}
