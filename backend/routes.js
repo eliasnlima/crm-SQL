@@ -17,6 +17,7 @@ routes.post('/login', SessionController.login)
 routes.use(auth)
 
 routes.post('/client', ClientController.store)
+routes.post('/action', ActionController.store)
 
 routes.use(importClientsRoutes)
 routes.delete('/client/remove', ClientController.delete)
@@ -30,7 +31,7 @@ routes.put('/intGrupo/:grupo', ClientController.proxIntGrupo)
 
 routes.put('/grupoStatus/:grupo', ClientController.statusGrupo)
 
-routes.post('/action', ActionController.store)
+
 routes.get('/client/:clientId/actions', ActionController.index)
 routes.get('/grupo/:grupo/actions', ActionController.indexGrupo)
 routes.get('/action/user', ActionController.show)

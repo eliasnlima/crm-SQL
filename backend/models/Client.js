@@ -1,7 +1,4 @@
 import pool from '../config/db.js'
-import dotenv from 'dotenv'
-
-dotenv.config()
 
 export async function create(client) {
     
