@@ -1,0 +1,82 @@
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clientes</title>
+  <link rel="stylesheet" href="../styles/clients.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Meus Clientes</h1>
+
+  
+  <div class="add-client-wrapper">
+    <input type="date" id="filtro-data" />
+      <button id="abrir-resumo-btn">Resumo</button>
+    <button id="add-client-btn">+ Novo Cliente</button>
+
+     <form id="importForm" enctype="multipart/form-data" class="form-import-wrapper">
+    <input type="file" name="file" accept=".csv" class="input-file" />
+    <button type="submit" class="btn">Importar</button>
+  </form>
+    
+  </div>
+ 
+
+    
+
+    <div id="result" class="message"></div>
+      <div class="search-wrapper">
+      <input type="text" id="search-client" placeholder="Buscar por nome ou código..." />
+      </div>
+      <div id="paginacao" class="paginacao-container"></div>
+    <ul id="clients" class="client-list"></ul>
+
+ 
+
+
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h2>Cadastrar Cliente</h2>
+    <input type="text" id="nome" placeholder="Nome" />
+    <input type="text" id="cnpj" placeholder="CNPJ" />
+     <input type="text" id="fone" placeholder="Telefone" />
+      <input type="text" id="email" placeholder="E-mail" />
+    <div class="modal-actions">
+      <button id="cadastrar-btn">Cadastrar</button>
+      <button id="fechar-btn">Cancelar</button>
+    </div>
+    <p id="modal-msg"></p>
+  </div>
+</div>
+
+
+<div id="modal-resumo" class="modal">
+  <div class="modal-content" style="max-width: 500px">
+    <h2>Resumo</h2>
+    <table id="tabela-fases" border="1" style="width:100%; color: white; text-align: left; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Quantidade</th>
+        </tr>
+      </thead>
+      <tbody>
+  
+      </tbody>
+    </table>
+    <button id="fechar-resumo-btn">Fechar</button>
+  </div>
+</div>
+  </div>
+
+
+  </div>
+
+  
+  <script src="../scripts/clients.js"></script>
+
+  
+</body>
+</html>

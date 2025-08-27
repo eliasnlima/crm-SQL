@@ -1,0 +1,69 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #111827; /* fundo escuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #f9fafb; /* texto claro */
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+   background-color: #1f2937; /* cinza escuro */
+  padding: 4rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ccc;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+input {
+  width: 90%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: 1px solid #374151;
+  background-color: #374151;
+  color: #f9fafb;
+}
+
+input::placeholder {
+  color: #9ca3af;
+}
+
+button {
+  width: 95%;
+  padding: 0.5rem;
+  background: #0275d8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 3%;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+#result {
+  margin-top: 1rem;
+  color: #f87171; /* vermelho claro para erros */
+}
+
+.cliente-agendado {
+    border: 2px solid green; /* borda verde ao redor */
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.grupo-agendado {
+    border: 2px solid green; /* borda verde para o grupo */
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 5px;
+}

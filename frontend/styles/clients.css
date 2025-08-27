@@ -1,0 +1,369 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #111827; /* fundo escuro */
+  margin: 0;
+  padding: 0;
+  color: #f9fafb; /* texto branco suave */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background: #1f2937; /* cinza escuro */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #f3f4f6;
+}
+
+.message {
+  text-align: center;
+  color: #f87171; /* vermelho suave */
+  margin-bottom: 20px;
+}
+
+.client-list {
+  list-style: none;
+  padding: 0;
+}
+
+.client-list li {
+  background-color: #374151; /* cinza médio */
+  padding: 12px 16px;
+  height: 40px;
+  margin-bottom: 5px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: #e5e7eb;
+  transition: background 0.3s;
+}
+
+.client-list li:hover {
+  background-color: #4b5563;
+}
+
+
+#add-client-btn {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+#add-client-btn:hover {
+  background-color: #059669;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(17, 24, 39, 0.8); /* fundo escuro com opacidade */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background-color: #1f2937;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content input {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #374151;
+  background-color: #374151;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.modal-content button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  flex: 1;
+  margin: 0 5px;
+}
+
+#cadastrar-btn {
+  background-color: #3b82f6;
+  color: white;
+}
+
+#fechar-btn {
+  background-color: #ef4444;
+  color: white;
+}
+
+#modal-msg {
+  margin-top: 10px;
+  color: #f87171;
+  font-size: 14px;
+  text-align: center;
+}
+
+.add-client-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+a {
+  text-decoration: none;
+  color: white
+}
+
+.data {
+  display: block;
+  font-size: 12px;
+  color: #9ca3af;
+  white-space: nowrap;
+  margin-left: 8px;
+  padding: 5px;
+}
+
+.search-wrapper {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#search-client {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #374151;
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+
+
+#add-client-btn,
+#abrir-resumo-btn {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+#add-client-btn:hover,
+#abrir-resumo-btn:hover {
+  background-color: #059669;
+}
+
+.add-client-wrapper {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center; 
+}
+
+#add-client-btn,
+#abrir-resumo-btn {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  line-height: 1; 
+  height: 42px; 
+  display: flex;
+  align-items: center;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#tabela-fases {
+  width: 100%;
+  color: #f9fafb; 
+  text-align: left;
+  border-collapse: collapse; 
+  border-radius: 8px;
+  background-color: #374151; 
+}
+
+
+#tabela-fases th {
+  background-color: #10b981; 
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  text-transform: uppercase; 
+  font-weight: bold;
+}
+
+
+#tabela-fases td {
+  background-color: #4b5563; 
+  padding: 12px;
+  font-size: 14px;
+  border-bottom: 1px solid #374151; 
+  transition: background 0.3s ease; 
+}
+
+
+#tabela-fases td:nth-child(2) {
+  text-align: center; 
+}
+
+
+#tabela-fases tr:hover td {
+  background-color: #6b7280; 
+}
+
+
+#tabela-fases tr:first-child td {
+  border-top: none; 
+}
+
+
+#tabela-fases tr:nth-child(even) {
+  background-color: #2d3748; 
+}
+
+#tabela-fases tr:nth-child(odd) {
+  background-color: #374151; 
+}
+
+
+#fechar-resumo-btn {
+  background-color: #ef4444; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#fechar-resumo-btn:hover {
+  background-color: #dc2626; 
+}
+
+#filtro-data {
+  background-color: #1f2937;
+  color: #f9fafb;
+  border: 1px solid #10b981;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 15px;
+  height: 42px;
+}
+
+.btn {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Estilização do input de arquivo */
+.input-file {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Wrapper do formulário para alinhar elementos */
+.form-import-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Espaçamento geral dos botões */
+.add-client-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.paginacao-container {
+  margin-top: 20px;
+  text-align: center;
+}
+.botao-paginacao {
+  margin: 0 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.botao-paginacao:disabled {
+  background-color: #ccc;
+  cursor: default;
+}
