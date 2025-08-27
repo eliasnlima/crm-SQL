@@ -52,11 +52,11 @@ function renderClients(todosClients) {
   const semGrupo = [];
 
   todosClients.forEach(cliente => {
-    if (cliente.grupoEconomico) {
-      if (!grupos[cliente.grupoEconomico]) {
-        grupos[cliente.grupoEconomico] = [];
+    if (cliente.grupo_codigo) {
+      if (!grupos[cliente.grupo_codigo]) {
+        grupos[cliente.grupo_codigo] = [];
       }
-      grupos[cliente.grupoEconomico].push(cliente);
+      grupos[cliente.grupo_codigo].push(cliente);
     } else {
       semGrupo.push(cliente);
     }
@@ -72,7 +72,7 @@ function renderClients(todosClients) {
 
     semGrupo.forEach(client => {
         const li = document.createElement("li")
-        li.innerHTML = `<a href="detalhes.html?id=${client._id}">${client.codigo} - ${client.nome}<span class="data">CNPJ: ${formatarCNPJ(client.CNPJ)} - ${formatarTelefone(client.fone)} - ${client.email}</span></a>`
+        li.innerHTML = `<a href="detalhes.html?id=${client.id}">${client.codigo} - ${client.nome}<span class="data">CNPJ: ${formatarCNPJ(client.cnpj)} - ${formatarTelefone(client.fone)} - ${client.email}</span></a>`
         div.appendChild(li)
   });
 
