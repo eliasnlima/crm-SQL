@@ -1,9 +1,15 @@
 import { create } from "../models/Client.js"
+import { showClients } from "../models/Client.js"
 
 class ClientController{
 
     async show(req, res){
 
+        const user_id = req.userId
+
+        const clients = await showClients(user_id)
+
+        return res.json({clients})
 
     }
 
