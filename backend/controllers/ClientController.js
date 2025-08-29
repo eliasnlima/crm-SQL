@@ -1,5 +1,6 @@
 import { create } from "../models/Client.js"
 import { showClients } from "../models/Client.js"
+import { showClientIndex } from "../models/Client.js"
 
 class ClientController{
 
@@ -63,23 +64,18 @@ class ClientController{
 
     async index(req, res){
         
-        const { clientId } = req.params
-
-        const client = await Client.findOne({_id: clientId})
-
-     
+        const { id } = req.params
+        
+        const data = await showClientIndex(id)
 
          let grupoClientes = [];
 
-    if (client.grupoEconomico) {
-      grupoClientes = await Client.find({
-        grupoEconomico: client.grupoEconomico,
-        _id: { $ne: client._id } 
-      });
+    if (data.grupo_codigo) {
+     grupoClientes = await showClientIndex(id)
     }
 
     return res.json({
-      client,
+      data,
       grupoClientes
     });
 

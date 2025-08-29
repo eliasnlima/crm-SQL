@@ -18,6 +18,7 @@ routes.use(auth)
 
 routes.post('/client', ClientController.store)
 routes.get('/clients', ClientController.show)
+routes.get('/client/:id', ClientController.index)
 
 routes.post('/action', ActionController.store)
 
@@ -25,7 +26,7 @@ routes.use(importClientsRoutes)
 routes.delete('/client/remove', ClientController.delete)
 
 routes.put('/client/:clientId', ClientController.update)
-routes.get('/client/:clientId', ClientController.index)
+
 routes.put('/clientStatus/:clientId', ClientController.statusClient )
 routes.put('/proxInt/:clientId', ClientController.proxInt)
 routes.put('/intGrupo/:grupo', ClientController.proxIntGrupo)

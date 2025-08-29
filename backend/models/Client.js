@@ -22,3 +22,10 @@ export async function showClients(user_id) {
 
 }
 
+export async function showClientIndex(id) {
+    
+    const res = await pool.query('SELECT * FROM clients WHERE id=$1', [id])
+    
+    return res.rows[0]
+
+}
