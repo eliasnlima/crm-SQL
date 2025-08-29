@@ -16,13 +16,14 @@ class ClientController{
     async store(req, res){
         
         try {
-            const { nome, cnpj, fone } = req.body
+            const { nome, cnpj, fone, email } = req.body
 
             const clientData = {
                 nome,
                 cnpj,
                 user_id: req.userId,
-                fone
+                fone,
+                email
             }
 
             const newClient = await create(clientData)

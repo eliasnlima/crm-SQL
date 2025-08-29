@@ -95,26 +95,26 @@ fecharModal.addEventListener('click', () => {
 cadastrarBtn.addEventListener('click', async () => {
 
     const nome = document.getElementById('nome').value 
-    const CNPJ = document.getElementById('cnpj').value 
+    const cnpj = document.getElementById('cnpj').value 
     const fone = document.getElementById('fone').value 
     const email = document.getElementById('email').value 
 
     const token = localStorage.getItem('token')
     const msg = document.getElementById('modal-msg')
 
-    if(!nome || !CNPJ){
+    if(!nome || !cnpj){
         msg.innerText = "Preencha todos os campos!"
     }
 
     try{
 
-        const res = await fetch('https://crm-backend-t9p2.onrender.com/client', {
+        const res = await fetch('http://localhost:3035/client', {
             method: 'POST',
             headers: {
                 'Content-Type' : 'application/json',
                 'authorization' : 'Bearer ' + token
             },
-            body: JSON.stringify({nome, CNPJ, fone, email})
+            body: JSON.stringify({nome, cnpj, fone, email})
         })
 
         const data = await res.json()

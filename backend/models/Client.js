@@ -3,7 +3,7 @@ import pool from '../config/db.js'
 export async function create(client) {
     
     try {
-        const res = await pool.query('INSERT INTO clients (nome, cnpj, user_id, fone) VALUES ($1, $2, $3, $4) RETURNING *', [client.nome, client.cnpj, client.user_id, client.fone])
+        const res = await pool.query('INSERT INTO clients (nome, cnpj, user_id, fone, email) VALUES ($1, $2, $3, $4, $5) RETURNING *', [client.nome, client.cnpj, client.user_id, client.fone, client.email])
 
         return res.rows[0];
     } catch(err){
@@ -21,3 +21,4 @@ export async function showClients(user_id) {
     return res.rows;
 
 }
+
