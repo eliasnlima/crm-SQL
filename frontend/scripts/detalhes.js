@@ -18,9 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
         proxIntGrupo(token, grupoCodigo)
     } else {
         carregarCliente(clientId, token)
+         statusClient(clientId, token)
         /* showActions(clientId, token)
         cadastra(clientId, token)
-        statusClient(clientId, token)
+       
         proxInt(token, clientId)  */
     }
 })
@@ -281,7 +282,7 @@ async function statusClient(clientId, token){
 
     const status = e.target.value
 
-    const res = await fetch(`https://crm-backend-t9p2.onrender.com/clientStatus/${clientId}`, {
+    const res = await fetch(`http://localhost:3035/clientStatus/${clientId}`, {
         method: 'PUT',
         headers: {
             'authorization' : 'Bearer ' + token,
