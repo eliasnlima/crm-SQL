@@ -1,6 +1,7 @@
 import { create } from "../models/Client.js"
 import { showClients } from "../models/Client.js"
 import { showClientIndex } from "../models/Client.js"
+import { updateStatus } from "../models/Client.js"
 
 class ClientController{
 
@@ -37,6 +38,40 @@ class ClientController{
         
     }
 
+    async index(req, res){
+        
+        const { id } = req.params
+        
+        const client = await showClientIndex(id)
+
+         let grupoClientes = [];
+
+    if (client.grupo_codigo) {
+     grupoClientes = await showClientIndex(id)
+    }
+
+    return res.json({
+      client,
+      grupoClientes
+    });
+
+    }
+
+      async statusClient(req, res){
+        
+        const { id } = req.params
+        const { status } = req.body 
+
+        const data = {
+            id,
+            status
+        }
+        const client = await updateStatus(data)
+        
+        return res.json({client})
+
+    }
+
     async delete(req, res){
 
         const { clientId } = req.body
@@ -62,34 +97,9 @@ class ClientController{
         return res.json({ message: "Atualizado!"})
     }
 
-    async index(req, res){
-        
-        const { id } = req.params
-        
-        const client = await showClientIndex(id)
+    
 
-         let grupoClientes = [];
-
-    if (client.grupo_codigo) {
-     grupoClientes = await showClientIndex(id)
-    }
-
-    return res.json({
-      client,
-      grupoClientes
-    });
-
-    }
-
-    async statusClient(req, res){
-        
-        const { clientId } = req.params
-        const { status } = req.body 
-        
-        const client = await Client.findByIdAndUpdate(clientId, { status }, {new: true})
-        return res.json({client})
-
-    }
+  
 
     async statusGrupo(req, res){
 

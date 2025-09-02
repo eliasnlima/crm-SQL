@@ -29,3 +29,10 @@ export async function showClientIndex(id) {
     return res.rows[0]
 
 }
+
+export async function updateStatus(client) {
+    
+    const res = await pool.query('UPDATE clients SET status=$1 WHERE id=$2 RETURNING *', [client.status, client.id])
+
+    return res.rows[0];
+}
