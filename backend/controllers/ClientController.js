@@ -66,16 +66,16 @@ class ClientController{
         
         const { id } = req.params
         
-        const data = await showClientIndex(id)
+        const client = await showClientIndex(id)
 
          let grupoClientes = [];
 
-    if (data.grupo_codigo) {
+    if (client.grupo_codigo) {
      grupoClientes = await showClientIndex(id)
     }
 
     return res.json({
-      data,
+      client,
       grupoClientes
     });
 

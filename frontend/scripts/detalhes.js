@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
         proxIntGrupo(token, grupoCodigo)
     } else {
         carregarCliente(clientId, token)
-        showActions(clientId, token)
+        /* showActions(clientId, token)
         cadastra(clientId, token)
         statusClient(clientId, token)
-        proxInt(token, clientId)
+        proxInt(token, clientId)  */
     }
 })
 
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function carregarCliente(clientId, token) {
     
     try{
-        const res = await fetch(`https://crm-backend-t9p2.onrender.com/client/${clientId}`, {
+        const res = await fetch(`http://localhost:3035/client/${clientId}`, {
         method: 'GET',
         headers: {
             'authorization' : 'Bearer ' + token
@@ -39,14 +39,14 @@ async function carregarCliente(clientId, token) {
     const data = await res.json()
 
     document.getElementById('cliente-nome').innerText = `${data.client.codigo} - ${data.client.nome}`
-    document.getElementById('cliente-cnpj').innerText = `CNPJ: ${formatarCNPJ(data.client.CNPJ)}`
+    document.getElementById('cliente-cnpj').innerText = `CNPJ: ${formatarCNPJ(data.client.cnpj)}`
     document.getElementById('cliente-email').innerText = `Email: ${data.client.email}`
     document.getElementById('cliente-telefone').innerText = `Telefone: ${formatarTelefone(data.client.fone)}`
     document.getElementById('status').value = data.client.status
-     document.getElementById('interacao').value = data.client.proxInt
+     document.getElementById('interacao').value = data.client.prox_int
   ? new Date(data.client.proxInt).toISOString().split('T')[0]
   : ''
-    document.getElementById('cliente-grupo').innerText = `G.E: ${data.client.grupoEconomico}`
+    document.getElementById('cliente-grupo').innerText = `G.E: ${data.client.grupo_codigo}`
 
       
     } catch (err){
@@ -222,7 +222,7 @@ async function showActions(clientId, token) {
 
     });
 
-}
+} 
 
 async function showActionsGrupo(grupo, token) {
     
