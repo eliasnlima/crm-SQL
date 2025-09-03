@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
         carregarCliente(clientId, token)
         statusClient(clientId, token)
         proxInt(token, clientId) 
-        /* showActions(clientId, token)
+        showActions(clientId, token)
+        /* 
         cadastra(clientId, token)
        
          */
@@ -194,7 +195,7 @@ async function showActions(clientId, token) {
     const lista = document.getElementById('acoes')
     lista.innerHTML = ""
 
-    const res = await fetch(`https://crm-backend-t9p2.onrender.com/client/${clientId}/actions`, {
+    const res = await fetch(`http://localhost:3035/client/${clientId}/actions`, {
         method: 'GET',
         headers: {
             'authorization' : 'Bearer ' + token
