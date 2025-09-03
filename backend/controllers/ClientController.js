@@ -2,6 +2,7 @@ import { create } from "../models/Client.js"
 import { showClients } from "../models/Client.js"
 import { showClientIndex } from "../models/Client.js"
 import { updateStatus } from "../models/Client.js"
+import { proxIntClient } from "../models/Client.js"
 
 class ClientController{
 
@@ -57,7 +58,7 @@ class ClientController{
 
     }
 
-      async statusClient(req, res){
+    async statusClient(req, res){
         
         const { id } = req.params
         const { status } = req.body 
@@ -121,10 +122,14 @@ class ClientController{
 
     async proxInt( req, res){
 
-        const { clientId } = req.params
+        const { id } = req.params
         const { proxInt } = req.body
 
-        const prox = await Client.findByIdAndUpdate(clientId, { proxInt }, {new: true})
+        const data = {
+            id,
+            proxInt
+        }
+        const prox = await proxIntClient(data)
 
         return res.json({prox})
     }

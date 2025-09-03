@@ -20,6 +20,7 @@ routes.post('/client', ClientController.store)
 routes.get('/clients', ClientController.show)
 routes.get('/client/:id', ClientController.index)
 routes.put('/clientStatus/:id', ClientController.statusClient )
+routes.put('/proxInt/:id', ClientController.proxInt)
 
 routes.post('/action', ActionController.store)
 
@@ -29,7 +30,7 @@ routes.delete('/client/remove', ClientController.delete)
 routes.put('/client/:clientId', ClientController.update)
 
 
-routes.put('/proxInt/:clientId', ClientController.proxInt)
+
 routes.put('/intGrupo/:grupo', ClientController.proxIntGrupo)
 
 
