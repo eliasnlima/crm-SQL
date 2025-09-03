@@ -18,11 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
         proxIntGrupo(token, grupoCodigo)
     } else {
         carregarCliente(clientId, token)
-         statusClient(clientId, token)
+        statusClient(clientId, token)
+        proxInt(token, clientId) 
         /* showActions(clientId, token)
         cadastra(clientId, token)
        
-        proxInt(token, clientId)  */
+         */
     }
 })
 
@@ -45,7 +46,7 @@ async function carregarCliente(clientId, token) {
     document.getElementById('cliente-telefone').innerText = `Telefone: ${formatarTelefone(data.client.fone)}`
     document.getElementById('status').value = data.client.status
      document.getElementById('interacao').value = data.client.prox_int
-  ? new Date(data.client.proxInt).toISOString().split('T')[0]
+  ? new Date(data.client.prox_int).toISOString().split('T')[0]
   : ''
     document.getElementById('cliente-grupo').innerText = `G.E: ${data.client.grupo_codigo}`
 
@@ -326,7 +327,7 @@ async function proxInt(token, clientId) {
 
     const proxInt = e.target.value
 
-    const res = await fetch(`https://crm-backend-t9p2.onrender.com/proxInt/${clientId}`, {
+    const res = await fetch(`http://localhost:3035/proxInt/${clientId}`, {
         method: 'PUT',
         headers: {
             'authorization' : 'Bearer ' + token,
