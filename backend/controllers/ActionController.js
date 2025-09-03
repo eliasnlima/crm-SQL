@@ -1,4 +1,5 @@
 import { createAction } from '../models/Action.js'
+import { showActions } from '../models/Action.js'
 import pool from '../config/db.js'
 
 
@@ -49,11 +50,11 @@ class ActionController{
 
     async index(req, res){
 
-        const { clientId } = req.params
+        const { id } = req.params
         
 
         try {
-            const actions = await Action.find({ client: clientId}).populate('client')
+            const actions = await showActions(id)
             return res.json({actions})
         } catch (err){
             return res.status(400).json({ error: "Erro ao buscar actions do cliente!"})

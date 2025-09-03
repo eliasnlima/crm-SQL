@@ -6,3 +6,10 @@ export async function createAction(client) {
     return res.rows[0]
 
 }
+
+export async function showActions(id) {
+    
+    const res = await pool.query('SELECT * FROM actions WHERE client_id=$1', [id])
+
+    return res.rows[0]
+}
