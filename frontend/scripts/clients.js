@@ -242,7 +242,7 @@ document.getElementById('filtro-data').addEventListener('change', (e) => {
 
     const filtrados = todosClients.filter(cliente => {
 
-       const dataCliente = new Date(cliente.proxInt).toISOString().split('T')[0];
+       const dataCliente = new Date(cliente.prox_int).toISOString().split('T')[0];
 
         return dataCliente === agendado;
 
