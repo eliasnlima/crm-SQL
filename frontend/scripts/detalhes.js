@@ -21,10 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         statusClient(clientId, token)
         proxInt(token, clientId) 
         showActions(clientId, token)
-        /* 
         cadastra(clientId, token)
-       
-         */
     }
 })
 
@@ -98,7 +95,7 @@ async function carregarGrupo(grupoCodigo, token) {
 
 }
 
-async function cadastra(client, token) {
+async function cadastra(client_id, token) {
     
     cadastraAction.addEventListener('click', async () => {
 
@@ -112,13 +109,13 @@ async function cadastra(client, token) {
     document.getElementById('modal-msg').innerHTML = "Salvando, por favor aguarde..."
     cadastraAction.disabled = true
 
-    const res = await fetch('https://crm-backend-t9p2.onrender.com/action', {
+    const res = await fetch('http://localhost:3035/action', {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json',
             'authorization' : 'Bearer ' + token
         },
-        body: JSON.stringify({ descricao, client })
+        body: JSON.stringify({ descricao, client_id })
     })
 
 
@@ -128,7 +125,7 @@ async function cadastra(client, token) {
         modal.style.display = "none"
         document.getElementById('descricao').value = ""
         document.getElementById('modal-msg').innerHTML = ""
-        showActions(client, token)
+        showActions(client_id, token)
         cadastraAction.disabled = false
     } else {
         document.getElementById('modal-msg').innerHTML = "Erro ao adicionar ação!"
