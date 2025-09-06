@@ -57,12 +57,12 @@ async function carregarCliente(clientId, token) {
 
 async function carregarGrupo(grupoCodigo, token) {
     try {
-        const res = await fetch(`https://crm-backend-t9p2.onrender.com/clients`, {
+        const res = await fetch(`http://localhost:3035/client/${grupoCodigo}`, {
             headers: { 'authorization': 'Bearer ' + token }
         })
 
         const data = await res.json()
-        const grupoClientes = data.clients.filter(c => c.grupoEconomico === grupoCodigo)
+        const grupoClientes = data.clients.filter(c => c.grupo_codigo === grupoCodigo)
 
         if (grupoClientes.length === 0) {
             document.getElementById('cliente-nome').innerText = "Grupo não encontrado!"

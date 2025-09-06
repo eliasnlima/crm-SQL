@@ -3,6 +3,7 @@ import { showClients } from "../models/Client.js"
 import { showClientIndex } from "../models/Client.js"
 import { updateStatus } from "../models/Client.js"
 import { proxIntClient } from "../models/Client.js"
+import { showGrupoIndex } from "../models/Client.js"
 
 class ClientController{
 
@@ -45,15 +46,8 @@ class ClientController{
         
         const client = await showClientIndex(id)
 
-         let grupoClientes = [];
-
-    if (client.grupo_codigo) {
-     grupoClientes = await showClientIndex(id)
-    }
-
     return res.json({
-      client,
-      grupoClientes
+      client
     });
 
     }
@@ -73,6 +67,20 @@ class ClientController{
 
     }
 
+    async indexGrupo(req, res){
+        
+        const { grupo } = req.params
+        
+        const clients = await showGrupoIndex(grupo)
+
+    return res.json({
+      clients
+    });
+
+    }
+
+
+ // MONGO DB
     async delete(req, res){
 
         const { clientId } = req.body
@@ -97,10 +105,6 @@ class ClientController{
 
         return res.json({ message: "Atualizado!"})
     }
-
-    
-
-  
 
     async statusGrupo(req, res){
 

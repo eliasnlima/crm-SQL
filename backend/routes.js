@@ -25,6 +25,10 @@ routes.get('/client/:id/actions', ActionController.index)
 
 routes.post('/action', ActionController.store)
 
+routes.get('/clients/:grupo', ClientController.indexGrupo)
+
+
+
 routes.use(importClientsRoutes)
 routes.delete('/client/remove', ClientController.delete)
 

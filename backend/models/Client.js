@@ -30,6 +30,15 @@ export async function showClientIndex(id) {
 
 }
 
+export async function showGrupoIndex(grupo) {
+    
+    const res = await pool.query('SELECT * FROM clients WHERE grupo_codigo=$1', [grupo])
+    
+    return res.rows;
+
+}
+
+
 export async function updateStatus(client) {
     
     const res = await pool.query('UPDATE clients SET status=$1 WHERE id=$2 RETURNING *', [client.status, client.id])
@@ -43,3 +52,4 @@ export async function proxIntClient(client) {
 
     return res.rows[0]
 }
+
