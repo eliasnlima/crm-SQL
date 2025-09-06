@@ -57,7 +57,7 @@ async function carregarCliente(clientId, token) {
 
 async function carregarGrupo(grupoCodigo, token) {
     try {
-        const res = await fetch(`http://localhost:3035/client/${grupoCodigo}`, {
+        const res = await fetch(`http://localhost:3035/clients/${grupoCodigo}`, {
             headers: { 'authorization': 'Bearer ' + token }
         })
 
@@ -73,7 +73,7 @@ async function carregarGrupo(grupoCodigo, token) {
         const nomes = grupoClientes.map(c => `${c.codigo} - ${c.nome}`).join(`\n`)
         const status = grupoClientes[0].status
         const int = grupoClientes[0].proxInt
-        const nomeGrupo = grupoClientes[0].nomeGrupo
+        const nomeGrupo = grupoClientes[0].nome_grupo
 
         document.getElementById('cliente-nome').innerText = `Grupo Econômico: ${grupoCodigo} - ${nomeGrupo}`
         document.getElementById('cliente-cnpj').innerText = nomes
@@ -86,7 +86,7 @@ async function carregarGrupo(grupoCodigo, token) {
   : ''
 
         for (const cliente of grupoClientes) {
-            await showActions(cliente._id, token, cliente.nome)
+            await showActions(cliente.id, token, cliente.nome)
         }
 
     } catch (err) {
