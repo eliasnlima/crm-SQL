@@ -24,6 +24,7 @@ routes.put('/proxInt/:id', ClientController.proxInt)
 routes.get('/client/:id/actions', ActionController.index)
 
 routes.post('/action', ActionController.store)
+routes.post('/action/:grupo', ActionController.storeG)
 
 routes.get('/clients/:grupo', ClientController.indexGrupo)
 
@@ -45,6 +46,5 @@ routes.put('/grupoStatus/:grupo', ClientController.statusGrupo)
 
 routes.get('/grupo/:grupo/actions', ActionController.indexGrupo)
 routes.get('/action/user', ActionController.show)
-routes.post('/action/grupo', ActionController.storeG)
 
 export default routes;

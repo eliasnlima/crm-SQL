@@ -1,5 +1,6 @@
 import { createAction } from '../models/Action.js'
 import { showActions } from '../models/Action.js'
+import { createActionGroup } from '../models/Action.js'
 import pool from '../config/db.js'
 
 
@@ -32,19 +33,19 @@ class ActionController{
     }
 
     async storeG (req, res){
+        
+        const  user_id  = req.userId
+        const { descricao } = req.body
+        const { grupo } = req.params
 
-        const { user } = req.userId
-        const { grupo, descricao } = req.body
+        const action = {
+            user_id,
+            descricao
+        }
 
-        const clients = await Client.find({ grupoEconomico: grupo})
+        const data = await createActionGroup(action, grupo)
 
-        const actions = await Promise.all(
-            clients.map(client =>
-                Action.create({ descricao, client: client._id, user})
-            )
-        )
-
-        return res.json({actions})
+        return res.json({data})
 
     }
 
