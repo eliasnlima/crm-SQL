@@ -16,7 +16,14 @@ export async function showActions(id) {
 
 export async function createActionGroup(action, grupo) {
     
-    const res = await pool.query('INSERT INTO actions (descricao, client_id, user_id) SELECT $1, c.id, $2 FROM clients c WHERE c.grupo_codigo = $3 RETURNING *', [action.descricao, action.user_id, grupo])
+    const res = await pool.query('INSERT INTO actions (descricao, user_id, grupo_codigo) VALUES ($1, $2, $3)RETURNING *', [action.descricao, action.user_id, grupo])
+
+    return res.rows;
+}
+
+export async function showActionsGroup(grupo) {
+    
+    const res = await pool.query('SELECT * FROM actions WHERE grupo_codigo=$1', [grupo])
 
     return res.rows;
 }

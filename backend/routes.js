@@ -25,8 +25,10 @@ routes.get('/client/:id/actions', ActionController.index)
 
 routes.post('/action', ActionController.store)
 routes.post('/action/:grupo', ActionController.storeG)
+routes.get('/action/:grupo', ActionController.indexGrupo)
 
 routes.get('/clients/:grupo', ClientController.indexGrupo)
+
 
 
 

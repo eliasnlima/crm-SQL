@@ -1,6 +1,7 @@
 import { createAction } from '../models/Action.js'
 import { showActions } from '../models/Action.js'
 import { createActionGroup } from '../models/Action.js'
+import { showActionsGroup } from '../models/Action.js'
 import pool from '../config/db.js'
 
 
@@ -64,34 +65,12 @@ class ActionController{
     }
 
     async indexGrupo(req, res){
- try {
+
         const { grupo } = req.params
 
+        const action = await showActionsGroup(grupo)
 
-        const clients = await Client.find({ grupoEconomico: grupo})
- 
-
-        const clientsId = clients.map(client => client._id )
-    
-
-       
-            const actions = await Action.find({ client: {$in: clientsId} }).populate('client')
-
-            const uniqueActionsMap = new Map()
-
-        actions.forEach(action => {
-             if (!uniqueActionsMap.has(action.descricao)) {
-            uniqueActionsMap.set(action.descricao, action)
-        }
-     })
-
-            const uniqueActions = Array.from(uniqueActionsMap.values())
-          
-            return res.json({actions: uniqueActions})
-        } catch (err){
-            return res.status(400).json({ error: "Erro ao buscar actions do cliente!"})
-        }
-        
+        return res.json({action})
     }
 
     async show(req, res){

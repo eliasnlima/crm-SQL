@@ -109,7 +109,7 @@ async function cadastra(client_id, token) {
     document.getElementById('modal-msg').innerHTML = "Salvando, por favor aguarde..."
     cadastraAction.disabled = true
 
-    const res = await fetch('http://localhost:3035/action', {
+    const res = await fetch(`http://localhost:3035/action`, {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json',
@@ -145,13 +145,17 @@ async function cadastraGrupo(grupo, token) {
         return
     }
 
-    const res = await fetch('https://crm-backend-t9p2.onrender.com/action/grupo', {
+     document.getElementById('modal-msg').innerHTML = "Salvando, por favor aguarde..."
+    cadastraAction.disabled = true
+
+
+    const res = await fetch(`http://localhost:3035/action/${grupo}`, {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json',
             'authorization' : 'Bearer ' + token
         },
-        body: JSON.stringify({ descricao, grupo })
+        body: JSON.stringify({ descricao })
     })
 
 
