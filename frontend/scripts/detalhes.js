@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
    
     if (grupoCodigo) {
         carregarGrupo(grupoCodigo, token)
-        showActionsGrupo(grupoCodigo, token)
         cadastraGrupo(grupoCodigo, token)
         statusGrupo(grupoCodigo, token)
         proxIntGrupo(token, grupoCodigo)
@@ -62,7 +61,7 @@ async function carregarGrupo(grupoCodigo, token) {
         })
 
         const data = await res.json()
-        const grupoClientes = data.clients.filter(c => c.grupo_codigo === grupoCodigo)
+        const grupoClientes = data.clients.filter(c => c.grupo_codigo === parseInt(grupoCodigo))
 
         if (grupoClientes.length === 0) {
             document.getElementById('cliente-nome').innerText = "Grupo não encontrado!"
@@ -85,9 +84,7 @@ async function carregarGrupo(grupoCodigo, token) {
          ? new Date(int).toISOString().split('T')[0]
   : ''
 
-        for (const cliente of grupoClientes) {
-            await showActions(cliente.id, token, cliente.nome)
-        }
+       await showActionsGrupo(grupoCodigo, token)
 
     } catch (err) {
         document.getElementById('cliente-nome').innerText = "Erro no servidor!"
@@ -233,7 +230,7 @@ async function showActionsGrupo(grupo, token) {
     const lista = document.getElementById('acoes')
     lista.innerHTML = ""
 
-    const res = await fetch(`https://crm-backend-t9p2.onrender.com/grupo/${grupo}/actions`, {
+    const res = await fetch(`http://localhost:3035/action/${grupo}`, {
         method: 'GET',
         headers: {
             'authorization' : 'Bearer ' + token
@@ -242,7 +239,7 @@ async function showActionsGrupo(grupo, token) {
 
     const data = await res.json()
 
-    data.actions.forEach(action => {
+    data.action.forEach(action => {
         
         const li = document.createElement('li')
 

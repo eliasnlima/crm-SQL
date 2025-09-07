@@ -23,7 +23,7 @@ export async function createActionGroup(action, grupo) {
 
 export async function showActionsGroup(grupo) {
     
-    const res = await pool.query('SELECT * FROM actions WHERE grupo_codigo=$1', [grupo])
+    const res = await pool.query('SELECT a.* FROM actions a WHERE a.grupo_codigo = $1 ORDER BY a.date DESC', [grupo])
 
     return res.rows;
 }
