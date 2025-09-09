@@ -304,7 +304,7 @@ async function statusGrupo(grupo, token){
 
     const status = e.target.value
 
-    const res = await fetch(`https://crm-backend-t9p2.onrender.com/grupoStatus/${grupo}`, {
+    const res = await fetch(`http://localhost:3035/groupStatus/${grupo}`, {
         method: 'PUT',
         headers: {
             'authorization' : 'Bearer ' + token,
