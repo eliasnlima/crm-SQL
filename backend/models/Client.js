@@ -46,6 +46,13 @@ export async function updateStatus(client) {
     return res.rows[0];
 }
 
+export async function updateStatusGroup(status, grupo) {
+    
+    const res = await pool.query('UPDATE clients SET status=$1 WHERE grupo_codigo=$2 RETURNING *', [status, grupo])
+
+    return res.rows[0];
+}
+
 export async function proxIntClient(client) {
     
     const res = await pool.query('UPDATE clients SET prox_int=$1 WHERE id=$2 RETURNING *', [client.proxInt, client.id])

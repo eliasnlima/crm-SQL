@@ -21,13 +21,16 @@ routes.get('/clients', ClientController.show)
 routes.get('/client/:id', ClientController.index)
 routes.put('/clientStatus/:id', ClientController.statusClient )
 routes.put('/proxInt/:id', ClientController.proxInt)
-routes.get('/client/:id/actions', ActionController.index)
+
+routes.get('/clients/:grupo', ClientController.indexGrupo)
+routes.put('/groupStatus/:grupo', ClientController.statusGrupo)
 
 routes.post('/action', ActionController.store)
 routes.post('/action/:grupo', ActionController.storeG)
 routes.get('/action/:grupo', ActionController.indexGrupo)
+routes.get('/client/:id/actions', ActionController.index)
 
-routes.get('/clients/:grupo', ClientController.indexGrupo)
+
 
 
 

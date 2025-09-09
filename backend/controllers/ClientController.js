@@ -1,9 +1,10 @@
-import { create } from "../models/Client.js"
+import { create, updateStatusGroup } from "../models/Client.js"
 import { showClients } from "../models/Client.js"
 import { showClientIndex } from "../models/Client.js"
 import { updateStatus } from "../models/Client.js"
 import { proxIntClient } from "../models/Client.js"
 import { showGrupoIndex } from "../models/Client.js"
+
 
 class ClientController{
 
@@ -67,6 +68,22 @@ class ClientController{
 
     }
 
+    async statusGrupo(req, res){
+        
+        const { grupo } = req.params
+        const { status } = req.body 
+
+        const data = {
+            grupo,
+            status
+        }
+        const client = await updateStatusGroup(status, grupo)
+        
+        return res.json({client})
+
+    }
+
+
     async indexGrupo(req, res){
         
         const { grupo } = req.params
@@ -106,23 +123,6 @@ class ClientController{
         return res.json({ message: "Atualizado!"})
     }
 
-    async statusGrupo(req, res){
-
-        const { grupo } = req.params
-        const { status } = req.body 
-        
-        const clients = await Client.find({ grupoEconomico: grupo})
-
-        const newStatus = await Promise.all(
-                    clients.map(client =>
-                        Client.findByIdAndUpdate(client._id, { status }, {new: true})
-                    )
-                )
-
-        return res.json({newStatus})
-        
-
-    }
 
     async proxInt( req, res){
 
