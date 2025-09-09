@@ -212,7 +212,7 @@ function contarPorFase(clientes) {
   const grupoContados = new Set()
 
   clientes.forEach(cliente => {
-    const grupo = cliente.grupoEconomico
+    const grupo = cliente.grupo_codigo
     const fase = cliente.status || 'Não definido'
 
     if(grupo) {
