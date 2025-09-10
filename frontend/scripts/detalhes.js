@@ -71,7 +71,7 @@ async function carregarGrupo(grupoCodigo, token) {
 
         const nomes = grupoClientes.map(c => `${c.codigo} - ${c.nome}`).join(`\n`)
         const status = grupoClientes[0].status
-        const int = grupoClientes[0].proxInt
+        const int = grupoClientes[0].prox_int
         const nomeGrupo = grupoClientes[0].nome_grupo
 
         document.getElementById('cliente-nome').innerText = `Grupo Econômico: ${grupoCodigo} - ${nomeGrupo}`
@@ -350,7 +350,7 @@ async function proxIntGrupo(token, grupo) {
 
     const proxInt = e.target.value
 
-    const res = await fetch(`https://crm-backend-t9p2.onrender.com/intGrupo/${grupo}`, {
+    const res = await fetch(`http://localhost:3035/proxIntG/${grupo}`, {
         method: 'PUT',
         headers: {
             'authorization' : 'Bearer ' + token,
