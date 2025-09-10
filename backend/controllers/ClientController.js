@@ -4,7 +4,7 @@ import { showClientIndex } from "../models/Client.js"
 import { updateStatus } from "../models/Client.js"
 import { proxIntClient } from "../models/Client.js"
 import { showGrupoIndex } from "../models/Client.js"
-
+import { proxIntGroup } from "../models/Client.js"
 
 class ClientController{
 
@@ -96,7 +96,30 @@ class ClientController{
 
     }
 
+    async proxInt( req, res){
 
+        const { id } = req.params
+        const { proxInt } = req.body
+
+        const data = {
+            id,
+            proxInt
+        }
+        const prox = await proxIntClient(data)
+
+        return res.json({prox})
+    }
+
+  
+  async proxIntG( req, res){
+
+        const { grupo } = req.params
+        const { proxInt } = req.body
+
+        const prox = await proxIntGroup(proxInt, grupo)
+
+        return res.json({prox})
+    }
  // MONGO DB
     async delete(req, res){
 
@@ -123,37 +146,6 @@ class ClientController{
         return res.json({ message: "Atualizado!"})
     }
 
-
-    async proxInt( req, res){
-
-        const { id } = req.params
-        const { proxInt } = req.body
-
-        const data = {
-            id,
-            proxInt
-        }
-        const prox = await proxIntClient(data)
-
-        return res.json({prox})
-    }
-
-    async proxIntGrupo(req, res){
-
-        const { grupo } = req.params
-        const { proxInt } = req.body 
-        
-        const clients = await Client.find({ grupoEconomico: grupo})
-
-        const int = await Promise.all(
-                    clients.map(client =>
-                        Client.findByIdAndUpdate(client._id, { proxInt }, {new: true})
-                    )
-                )
-
-        return res.json({int})
-
-    }
 
   
 }

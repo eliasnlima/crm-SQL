@@ -60,3 +60,9 @@ export async function proxIntClient(client) {
     return res.rows[0]
 }
 
+export async function proxIntGroup(proxInt, grupo) {
+    
+    const res = await pool.query('UPDATE clients SET prox_int=$1 WHERE grupo_codigo=$2 RETURNING *', [proxInt, grupo])
+
+    return res.rows[0]
+}

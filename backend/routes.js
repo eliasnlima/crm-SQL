@@ -24,6 +24,7 @@ routes.put('/proxInt/:id', ClientController.proxInt)
 
 routes.get('/clients/:grupo', ClientController.indexGrupo)
 routes.put('/groupStatus/:grupo', ClientController.statusGrupo)
+routes.put('/proxIntG/:grupo', ClientController.proxIntG)
 
 routes.post('/action', ActionController.store)
 routes.post('/action/:grupo', ActionController.storeG)
@@ -42,10 +43,9 @@ routes.put('/client/:clientId', ClientController.update)
 
 
 
-routes.put('/intGrupo/:grupo', ClientController.proxIntGrupo)
 
 
-routes.put('/grupoStatus/:grupo', ClientController.statusGrupo)
+
 
 
 
