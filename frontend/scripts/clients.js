@@ -246,7 +246,7 @@ async function importClient(token) {
     e.preventDefault()
     const formData = new FormData(e.target)
     
-    const response = await fetch('https://crm-backend-t9p2.onrender.com/import-clients', {
+    const response = await fetch('http://localhost:3035/import-clients', {
       method: 'POST',
       headers: {
         'authorization' : 'Bearer ' + token
