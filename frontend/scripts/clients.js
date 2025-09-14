@@ -152,35 +152,23 @@ function formatarTelefone(telefone) {
 }
 
 document.getElementById('search-client').addEventListener('input', (e) => {
-     const termo = e.target.value.trim().replace(/\s+/g, ' ').toLowerCase();
+    const termo = e.target.value.trim().replace(/\s+/g, ' ').toLowerCase();
 
-     if (termo === "") {
+    if (termo === "") {
         renderClients(todosClients);
         return;
     }
 
+  
     const filtrados = todosClients.filter(cliente => {
-       const termo = e.target.value.toLowerCase();
-
-    const filtrados = todosClients.filter(cliente => {
-        return (
-            cliente.nome?.toLowerCase().includes(termo) ||
-            cliente.codigo?.toLowerCase().includes(termo)
-        );
-    });
-
-    const grupoFiltrado = filtrados.find(cliente => cliente.grupoEconomico);
-    
-    if (grupoFiltrado) {
-   
-        renderGroup(grupoFiltrado.grupoEconomico);
-    } else {
-     
-        renderClients(filtrados);
-    }
+    const nome = cliente.nome ? String(cliente.nome).toLowerCase() : "";
+    const codigo = cliente.codigo ? String(cliente.codigo).toLowerCase() : "";
+    return nome.includes(termo) || codigo.includes(termo);
 });
 
-})
+        renderClients(filtrados);
+   
+});
 
 function renderGroup(grupoCodigo) {
     const div = document.getElementById('clients');
@@ -188,9 +176,10 @@ function renderGroup(grupoCodigo) {
 
 
     const li = document.createElement("li");
+     const nomeGrupo = grupoCodigo[0]?.nome
     li.innerHTML = `
         <a href="detalhes.html?grupo=${grupoCodigo}">
-            G.E: ${grupoCodigo}
+            G.E: ${grupoCodigo} - ${nomeGrupo}
         </a>
     `;
     div.appendChild(li);
