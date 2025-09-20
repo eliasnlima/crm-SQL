@@ -65,15 +65,29 @@ function renderClients(todosClients) {
    Object.entries(grupos).forEach(([grupoCodigo, membros]) => {
         const li = document.createElement("li")
         const nomeGrupo = membros[0]?.nome_grupo
-        li.innerHTML = `<a href="detalhes.html?grupo=${grupoCodigo}">G.E: ${grupoCodigo} - ${nomeGrupo} - ${membros.length} clientes</a>`
+        const proxint = membros[0]?.prox_int
+        ? new Date(membros[0]?.prox_int).toLocaleDateString("pt-BR")
+            : "Sem agendamento";
+
+        li.innerHTML = `<a href="detalhes.html?grupo=${grupoCodigo}"><div class="info">G.E: ${grupoCodigo} - ${nomeGrupo} - ${membros.length} clientes</div> <div class="agendamento">📅 ${proxint}</div></a>`
         div.appendChild(li)
     })
 
 
     semGrupo.forEach(client => {
+         const dataAgendada = client.prox_int
+            ? new Date(client.prox_int).toLocaleDateString("pt-BR")
+            : "Sem agendamento";
+
         const li = document.createElement("li")
-        li.innerHTML = `<a href="detalhes.html?id=${client.id}">${client.codigo} - ${client.nome}<span class="data">CNPJ: ${formatarCNPJ(client.cnpj)} - ${formatarTelefone(client.fone)} - ${client.email}</span></a>`
-        div.appendChild(li)
+        li.innerHTML = `<a href="detalhes.html?id=${client.id}">
+            <div class="info">
+                ${client.codigo} - ${client.nome}
+                <span class="data">CNPJ: ${formatarCNPJ(client.cnpj)} - ${formatarTelefone(client.fone)} - ${client.email}</span>
+            </div>
+            <div class="agendamento">📅 ${dataAgendada}</div>
+        </a>`;
+        div.appendChild(li);
   });
 
   

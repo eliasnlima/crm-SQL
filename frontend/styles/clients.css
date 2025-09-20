@@ -394,3 +394,38 @@ a {
   border-color: #059669; /* azul destaque */
   background-color: #111827;
 }
+
+.client-list li a {
+    display: flex; /* flex horizontal */
+    justify-content: space-between; /* esquerda x direita */
+    align-items: center; /* verticalmente centralizado */
+    text-decoration: none;
+    color: #e5e7eb;
+    background-color: #374151;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.client-list li a:hover {
+    background-color: #4b5563;
+}
+
+.client-list li a .info {
+    display: flex;
+    flex-direction: column; /* nome + contato empilhados verticalmente */
+    max-width: 80%; /* evita que a info “empurre” a data */
+}
+
+.client-list li a .info .data {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 2px;
+}
+
+.client-list li a .agendamento {
+    font-size: 13px;
+    color: #10b981;
+    white-space: nowrap;
+    flex-shrink: 0; /* garante que a data não encolha */
+    margin-left: 10px;
+}
