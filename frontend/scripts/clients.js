@@ -240,6 +240,22 @@ document.getElementById('filtro-data').addEventListener('change', (e) => {
     renderClients(filtrados)
 })
 
+document.getElementById('filtro-status').addEventListener('change', (e) => {
+    const status = e.target.value
+
+    if(!status){
+      renderClients(todosClients)
+      return;
+    }
+
+    const filtrados = todosClients.filter(cliente => {
+
+      return cliente.status === status;
+    })
+
+    renderClients(filtrados)
+})
+
 async function importClient(token) {
     
     document.getElementById('importForm').addEventListener('submit', async (e) => {

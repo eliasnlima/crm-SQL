@@ -11,12 +11,24 @@
 
   
   <div class="add-client-wrapper">
+     <select id="filtro-status">
+    <option value="">Todos</option>
+    <option value="Prospecção">Prospecção</option>
+    <option value="Em negociação">Em negociação</option>
+    <option value="Cliente novo">Cliente novo</option>
+    <option value="Acompanhamento">Acompanhamento</option>
+    <option value="Inativo">Inativo</option>
+    <option value="Reativado">Reativado</option>
+    <option value="Tirar da carteira">Tirar da carteira</option>
+    <option value="Vazio">Vazio</option>
+  </select>
+
     <input type="date" id="filtro-data" />
       <button id="abrir-resumo-btn">Resumo</button>
     <button id="add-client-btn">+ Novo Cliente</button>
 
      <form id="importForm" enctype="multipart/form-data" class="form-import-wrapper">
-    <input type="file" name="file" accept=".csv" class="input-file" />
+    <center><input type="file" name="file" accept=".csv" class="input-file" /></center>
     <button type="submit" class="btn">Importar</button>
   </form>
     

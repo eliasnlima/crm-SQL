@@ -333,9 +333,11 @@ a {
   padding: 6px 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
+  width: 140px;
   background-color: #f8f9fa;
   font-size: 14px;
   cursor: pointer;
+  align-items: center;
 }
 
 /* Wrapper do formulário para alinhar elementos */
@@ -366,4 +368,29 @@ a {
 .botao-paginacao:disabled {
   background-color: #ccc;
   cursor: default;
+}
+
+#filtro-status {
+  background-color: #1f2937; /* fundo escuro */
+  color: #f9fafb;           /* texto branco suave */
+  border: 1px solid #10b981; /* borda verde para combinar com botões */
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 15px;
+  height: 42px;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+/* Efeito ao passar o mouse */
+#filtro-status:hover {
+  border-color: #059669; /* verde mais escuro */
+  background-color: #111827; /* levemente mais escuro */
+}
+
+/* Efeito quando estiver selecionado/focado */
+#filtro-status:focus {
+  outline: none;
+  border-color: #059669; /* azul destaque */
+  background-color: #111827;
 }

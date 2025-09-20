@@ -3,7 +3,7 @@ import multer from 'multer'
 import csvParser from 'csv-parser'
 import fs from 'fs'
 import authMiddleware from '../middlewares/auth.js'
-import pool from '../config/db.js' // sua conexão PG
+import pool from '../config/db.js' 
 
 const upload = multer({ dest: 'uploads/' })
 const router = express.Router()
@@ -16,7 +16,7 @@ router.post('/import-clients', authMiddleware, upload.single('file'), async (req
   fs.createReadStream(req.file.path)
     .pipe(csvParser({ separator: ';' }))
     .on('data', (data) => {
-      data.user_id = req.userId // ajusta para Postgres
+      data.user_id = req.userId 
       results.push(data)
     })
     .on('end', async () => {
@@ -29,7 +29,7 @@ router.post('/import-clients', authMiddleware, upload.single('file'), async (req
             if (d.grupo_codigo === '') d.grupo_codigo = null
             else if (d.grupo_codigo) d.grupo_codigo = String(d.grupo_codigo).trim()
 
-            d.cnpj = d.cnpj.replace(/\D/g, '') // remove pontuação do CNPJ
+            d.cnpj = d.cnpj.replace(/\D/g, '') 
             return d
           })
 
@@ -65,7 +65,7 @@ router.post('/import-clients', authMiddleware, upload.single('file'), async (req
         console.error('❌ Erro ao importar:', err)
         res.status(500).json({ error: 'Erro ao importar', details: err.message })
       } finally {
-        fs.unlinkSync(req.file.path) // apaga o arquivo temporário
+        fs.unlinkSync(req.file.path)
       }
     })
 })
