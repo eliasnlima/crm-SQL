@@ -1,4 +1,5 @@
 import { createUser } from '../models/User.js'
+import { showUsers } from '../models/User.js'
 
 class UserController{
 
@@ -12,6 +13,14 @@ class UserController{
         console.log("Erro ao criar usuario!")
     }
        
+    }
+
+    async show(req, res){
+
+        const role = req.query.role || "vendedor"
+        const users = await showUsers(role)
+
+        return res.json({users})
     }
 
 }

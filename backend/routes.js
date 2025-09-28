@@ -3,6 +3,8 @@ import UserController from "./controllers/UserController.js";
 import SessionController from "./controllers/SessionController.js";
 
 import auth from "./middlewares/auth.js";
+import { isAdmin } from "./middlewares/admin.js";
+
 import ClientController from "./controllers/ClientController.js";
 import ActionController from "./controllers/ActionController.js"
 
@@ -31,25 +33,16 @@ routes.post('/action/:grupo', ActionController.storeG)
 routes.get('/action/:grupo', ActionController.indexGrupo)
 routes.get('/client/:id/actions', ActionController.index)
 
-
-
-
-
-
 routes.use(importClientsRoutes)
 routes.delete('/client/remove', ClientController.delete)
 
 routes.put('/client/:clientId', ClientController.update)
 
 
-
-
-
-
-
-
-
 routes.get('/grupo/:grupo/actions', ActionController.indexGrupo)
 routes.get('/action/user', ActionController.show)
 
+// ADMIN
+
+routes.get('/admin/users', isAdmin, UserController.show )
 export default routes;

@@ -19,8 +19,15 @@ export async function createUser(user) {
 
 export async function findUser(name) {
     
-    const res = await pool.query('SELECT id, name, password_hash FROM users WHERE name=$1', [name])
+    const res = await pool.query('SELECT id, name, password_hash, role FROM users WHERE name=$1', [name])
 
     return res.rows[0];
 
+}
+
+export async function showUsers(role) {
+    
+    const res = await pool.query('SELECT * from users WHERE role=$1', [role])
+
+    return res.rows;
 }

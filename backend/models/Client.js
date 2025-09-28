@@ -66,3 +66,5 @@ export async function proxIntGroup(proxInt, grupo) {
 
     return res.rows[0]
 }
+
+// ADMIN    
