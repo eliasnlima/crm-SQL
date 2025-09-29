@@ -7,6 +7,7 @@ import { isAdmin } from "./middlewares/admin.js";
 
 import ClientController from "./controllers/ClientController.js";
 import ActionController from "./controllers/ActionController.js"
+import AdminController from "./controllers/AdminController.js";
 
 import importClientsRoutes from './routes/importClient.js'
 
@@ -45,4 +46,9 @@ routes.get('/action/user', ActionController.show)
 // ADMIN
 
 routes.get('/admin/users', isAdmin, UserController.show )
+routes.post('/admin/user/:user_id', isAdmin, AdminController.showActions)
+
+
+
+
 export default routes;
