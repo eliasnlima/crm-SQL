@@ -23,7 +23,13 @@ document.getElementById("login-form").addEventListener('submit', async (e) => {
             localStorage.setItem('token', data.token)
             document.getElementById('result').innerHTML = "Login realizado com sucesso!"
 
-            setTimeout(() => window.location.href = 'telas/clientes.html', 1000)
+            if(data.user.role == "admin"){
+                setTimeout(() => window.location.href = 'telas/admin/dashboard.html', 1000)
+            }else{
+                setTimeout(() => window.location.href = 'telas/clientes.html', 1000)
+            }
+
+            
         } else {
             document.getElementById('result').innerHTML = data.error || 'Erro ao fazer login';
             
