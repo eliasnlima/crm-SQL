@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalhes do Vendedor</title>
+  <link rel="stylesheet" href="../../styles/user-dashboard.css">
+</head>
+<body>
+   <div class="container">
+    
+    <button class="btn-voltar" onclick="window.location.href='dashboard.html'">← Voltar</button>
+
+    <h1 id="vendedor-nome">Vendedor: João Silva</h1>
+
+    <div class="filtro">
+      <label for="data">Selecione a data:</label>
+      <input type="date" id="data">
+    </div>
+
+    <div class="card">
+      <h2>Clientes Atualizados</h2>
+      <p id="qtd-clientes">0</p>
+    </div>
+
+    <div id="result" class="message"></div>
+
+  </div>
+</body>
+</html>
