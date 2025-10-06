@@ -33,7 +33,7 @@ async function carregarUsuarios() {
     data.users.forEach(user => {
       const li = document.createElement("li");
       li.innerHTML = `
-        <a href="#">
+        <a href="user-dashboard.html?id=${user.id}&name=${encodeURIComponent(user.name)}">
           <div class="user-info">
             <span class="user-name">${user.name}</span>
             <span class="user-email">Função: ${user.role}</span>
