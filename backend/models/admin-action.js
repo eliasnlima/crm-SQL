@@ -24,3 +24,23 @@ export async function showActionQtd(date, user_id) {
     return res.rows[0];
 
 }
+
+export async function showActionNull(user_id, inicio, fim) {
+    
+    const res = await pool.query(`
+    SELECT
+    c.codigo,
+    c.nome
+FROM
+    public.clients AS c
+LEFT JOIN
+    public.actions AS a ON c.codigo = a.client_id
+    AND a.user_id = $1
+    AND a.date >= $2
+    AND a.date < $3
+WHERE
+    a.id IS NULL`, [user_id, inicio, fim])
+
+    return res.rows;
+
+}

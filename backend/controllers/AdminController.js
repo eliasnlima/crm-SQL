@@ -1,5 +1,6 @@
 import pool from '../config/db.js'
 import { showActionQtd } from '../models/admin-action.js'
+import { showActionNull } from '../models/admin-action.js';
 
 
 class AdminController{
@@ -20,7 +21,17 @@ class AdminController{
 
     }
 
-    
+    async nullActions(req, res){
+      
+      const { user_id} = req.params
+      const { inicio } = req.body
+      const { fim } = req.body
+
+      const result = await showActionNull(user_id, inicio, fim)
+
+      return res.json({ result })
+
+    }
     
 }
 
