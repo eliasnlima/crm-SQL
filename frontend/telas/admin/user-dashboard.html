@@ -23,6 +23,35 @@
       <p id="qtd-clientes">0</p>
     </div>
 
+     <div class="filtro-periodo">
+      <h2>Clientes sem atualizações no período</h2>
+
+      <div class="inputs">
+        <div class="campo-data">
+          <label for="inicio">Data de Início:</label>
+          <input type="date" id="inicio">
+        </div>
+
+        <div class="campo-data">
+          <label for="fim">Data de Fim:</label>
+          <input type="date" id="fim">
+        </div>
+
+        <button id="btn-filtrar">Filtrar</button>
+
+        
+      </div>
+
+      <ul id="clientes-sem-acoes" class="client-list"></ul>
+    </div>
+
+    <!-- Resultado da busca -->
+    <div id="result" class="message"></div>
+
+    <!-- Lista de clientes sem ações -->
+    
+
+
     <div id="result" class="message"></div>
 
   </div>

@@ -126,3 +126,80 @@ h1 {
     margin-bottom: 15px;
   }
 }
+
+.filtro-periodo {
+  background-color: #1f2937;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.filtro-periodo h2 {
+  margin-bottom: 15px;
+  color: #f3f4f6;
+  font-size: 20px;
+  text-align: left;
+}
+
+.inputs {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.campo-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo-data label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #d1d5db;
+}
+
+.campo-data input[type="date"] {
+  background-color: #374151;
+  border: none;
+  padding: 8px 10px;
+  color: #f9fafb;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+#btn-filtrar {
+  background-color: #10b981;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#btn-filtrar:hover {
+  background-color: #1d4ed8;
+}
+
+/* Lista de clientes sem ações */
+#clientes-sem-acoes {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+#clientes-sem-acoes li {
+  background-color: #374151;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  color: #e5e7eb;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+#clientes-sem-acoes li:hover {
+  background-color: #4b5563;
+}

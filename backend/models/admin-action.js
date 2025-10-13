@@ -22,24 +22,50 @@ export async function showActionQtd(date, user_id) {
 ) AS entidades;`, [date, user_id])
 
     return res.rows[0];
-
+        
 }
 
 export async function showActionNull(user_id, inicio, fim) {
     
     const res = await pool.query(`
-    SELECT
-    c.codigo,
-    c.nome
-FROM
-    public.clients AS c
-LEFT JOIN
-    public.actions AS a ON c.codigo = a.client_id
-    AND a.user_id = $1
-    AND a.date >= $2
-    AND a.date < $3
-WHERE
-    a.id IS NULL`, [user_id, inicio, fim])
+    SELECT DISTINCT
+    CASE 
+        WHEN c.grupo_codigo IS NULL THEN c.codigo::text
+        ELSE c.grupo_codigo::text 
+    END AS codigo,
+    CASE 
+        WHEN c.grupo_codigo IS NULL THEN c.nome
+        ELSE c.nome_grupo 
+    END AS nome,
+    c.grupo_codigo
+FROM clients c
+WHERE c.user_id = $1
+  AND (
+      -- Clientes individuais sem ações no período
+      (
+          c.grupo_codigo IS NULL
+          AND NOT EXISTS (
+              SELECT 1
+              FROM actions a
+              WHERE a.client_id = c.id
+              AND a.date::date BETWEEN $2 AND $3
+              AND a.user_id = c.user_id
+          )
+      )
+      OR
+      -- Grupos sem ações no período
+      (
+          c.grupo_codigo IS NOT NULL
+          AND NOT EXISTS (
+              SELECT 1
+              FROM actions a
+              WHERE a.grupo_codigo = c.grupo_codigo
+              AND a.date::date BETWEEN $2 AND $3
+              AND a.user_id = c.user_id
+          )
+      )
+  )
+ORDER BY c.grupo_codigo;`, [user_id, inicio, fim])
 
     return res.rows;
 
