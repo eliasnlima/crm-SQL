@@ -48,6 +48,7 @@ routes.get('/action/user', ActionController.show)
 routes.get('/admin/users', isAdmin, UserController.show )
 routes.post('/admin/user/:user_id', isAdmin, AdminController.showActions)
 routes.post('/admin/user/:user_id/actionNull', isAdmin, AdminController.nullActions)
+routes.get('/admin/user/:user_id/clients', isAdmin, AdminController.showClients)
 
 
 
