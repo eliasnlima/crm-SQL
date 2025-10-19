@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-filtrar').addEventListener('click', () => {
   filtrarSemAcoes(userId, token) 
 })
+
+document.getElementById('btn-todos-clientes').addEventListener('click', () => {
+      window.location.href = `clients-user.html?id=${userId}&name=${encodeURIComponent(userNome)}`
+})
    
 })
 
@@ -45,11 +49,6 @@ async function carregaUser(id, token) {
         const data = await res.json()
         
         document.getElementById('qtd-clientes').innerHTML = data.qtd?.quantidade_de_acoes
-
-       
-        
-
-
 
     }catch (err){
         document.getElementById('result').innerHTML = err || "Erro ao filtrar quantidade de ações!"

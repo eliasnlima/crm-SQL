@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clientes do Vendedor</title>
+  <link rel="stylesheet" href="../../styles/clients-user.css">
+  <link rel="stylesheet" href="../../styles/clients.css">
+</head>
+<body>
+  <div class="container">
+    <button class="btn-voltar" id="btn-voltar">← Voltar</button>
+    <h1 id="vendedor-nome">Clientes de Vendedor</h1>
+    
+
+    <div id="clients-list" class="client-list">
+      <!-- Os cards dos clientes serão inseridos aqui via JS -->
+    </div>
+
+    <!-- Pop-up de edição -->
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span id="close-popup" class="close">&times;</span>
+        <h2>Editar Cliente</h2>
+        <form id="edit-client-form">
+          <label for="edit-nome">Nome:</label>
+          <input type="text" id="edit-nome">
+
+          <label for="edit-codigo">Código:</label>
+          <input type="text" id="edit-codigo" disabled>
+
+          <label for="edit-vendedor">Mover para outro vendedor:</label>
+          <select id="edit-vendedor">
+            <!-- Opções serão carregadas via JS -->
+          </select>
+
+          <button type="submit">Salvar Alterações</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../../scripts/clients-user.js"></script>
+</body>
+</html>

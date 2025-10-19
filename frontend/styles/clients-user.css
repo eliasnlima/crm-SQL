@@ -1,0 +1,138 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #111827; 
+  color: #f9fafb; 
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background: #1f2937; 
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.btn-voltar {
+  background-color: #10b981;
+  color: #f9fafb;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+}
+
+.btn-voltar:hover {
+  background-color: #1d4ed8;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #f3f4f6;
+  font-size: 26px;
+}
+
+.client-card {
+  background-color: #374151;
+  padding: 16px 20px;
+  border-radius: 6px;
+  color: #e5e7eb;
+  font-weight: 500;
+  width: 1120px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.client-card:hover {
+  background-color: #4b5563;
+  transform: scale(1.02);
+}
+
+.client-card h3 {
+  font-size: 17px;
+  margin: 0 0 6px 0;
+  color: #f9fafb;
+}
+
+.client-card p {
+  font-size: 14px;
+  color: #f9fafb;
+  margin: 0;
+}
+
+/* Pop-up */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.popup-content {
+  background-color: #1f2937;
+  margin: 100px auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  color: #f9fafb;
+}
+
+.close {
+  color: #f87171;
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #f87171;
+  font-weight: bold;
+}
+
+#edit-client-form label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+#edit-client-form input,
+#edit-client-form select {
+  width: 90%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #374151;
+  color: #f9fafb;
+  font-size: 14px;
+}
+
+#edit-client-form button {
+  margin-top: 15px;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#edit-client-form button:hover {
+  background-color: #1d4ed8;
+}

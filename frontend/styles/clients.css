@@ -41,6 +41,7 @@ h1 {
   font-weight: 500;
   color: #e5e7eb;
   transition: background 0.3s;
+  cursor: pointer;
 }
 
 .client-list li:hover {
