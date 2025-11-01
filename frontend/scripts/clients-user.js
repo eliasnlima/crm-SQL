@@ -88,7 +88,8 @@ function renderClients(todosClients, token) {
         li.addEventListener('click', () => openPopup({
               isGroup: true,
               nome: nomeGrupo,
-              codigo: grupoCodigo
+              codigo: grupoCodigo,
+              user_id: membros[0].user_id
         }, token));
     })
 
@@ -126,12 +127,13 @@ function formatarTelefone(telefone) {
 }
 
   async function openPopup(client, token) {
-  const isGrupo = client.grupo_codigo !== null;
+   const isGrupo = !!client.grupo_codigo; 
 
   if (isGrupo) {
     document.querySelector('.popup-content h2').textContent = "Editar Grupo Econômico";
-    editNome.value = client.nome || "";
-    editCodigo.value = client.codigo || "";
+    editNome.value = client.nome_grupo || "";
+    editCodigo.value = client.grupo_codigo || "";
+    
 
     editNome.disabled = true;
     editCodigo.disabled = true;
@@ -175,12 +177,18 @@ editForm.addEventListener("submit", async (e) => {
   const token = localStorage.getItem("token");
   const isGrupo = currentClientId.grupo_codigo !== null;
 
+  const grupo = document.getElementById('edit-codigo').value
+
+    const urlParams = new URLSearchParams(window.location.search)
+    const userId = urlParams.get('id')
+
   try {
     let url = "";
     let body = { user_id: newUserId };
 
     if (isGrupo) {
-      url = `http://localhost:3035/admin/groups/${currentClientId.grupo_codigo}`;
+      url = `http://localhost:3035/admin/groups/${grupo}`;
+      
     } else {
       url = `http://localhost:3035/admin/clients/${currentClientId.id}`;
       body.nome = editNome.value;
@@ -197,7 +205,7 @@ editForm.addEventListener("submit", async (e) => {
 
     if (!res.ok) throw new Error("Erro ao atualizar.");
     popup.style.display = "none";
-    showClients(currentClientId.user_id, token); // recarrega lista
+    showClients(userId, token); // recarrega lista
   } catch (err) {
     console.error(err);
     alert("Erro ao salvar alterações.");

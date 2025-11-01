@@ -3,7 +3,7 @@ import { showActionQtd } from '../models/admin-action.js'
 import { showActionNull } from '../models/admin-action.js';
 import { showClients } from '../models/admin-action.js';
 import { updateUserClient } from '../models/admin-action.js';
-
+import { updateUserGroup } from '../models/admin-action.js';
 
 class AdminController{
 
@@ -55,6 +55,18 @@ class AdminController{
       return res.json({newUser})
       
     }
+
+       async groupUpdate(req, res){
+
+      const grupoCodigo = req.params.grupoCodigo;
+      const { user_id } = req.body
+
+      const newUser = await updateUserGroup(user_id, grupoCodigo)
+
+      return res.json({newUser})
+      
+    }
+    
     
 }
 

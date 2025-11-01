@@ -88,8 +88,15 @@ export async function updateUserClient(user_id, clientId) {
     return res.rows;
 }
 
+export async function updateUserGroup(user_id, grupoCodigo) {
+    
+    const res = await pool.query(
+        `UPDATE clients SET user_id = $1 WHERE grupo_codigo = $2`,
+        [user_id, grupoCodigo]
+      );
 
-
+    return res.rows;
+}
 
 
 

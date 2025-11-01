@@ -50,6 +50,7 @@ routes.post('/admin/user/:user_id', isAdmin, AdminController.showActions)
 routes.post('/admin/user/:user_id/actionNull', isAdmin, AdminController.nullActions)
 routes.get('/admin/user/:user_id/clients', isAdmin, AdminController.showClients)
 routes.put('/admin/clients/:clientId', isAdmin, AdminController.userUpdate)
+routes.put('/admin/groups/:grupoCodigo', isAdmin, AdminController.groupUpdate)
 
 
 
