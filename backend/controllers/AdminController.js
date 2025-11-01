@@ -2,6 +2,7 @@ import pool from '../config/db.js'
 import { showActionQtd } from '../models/admin-action.js'
 import { showActionNull } from '../models/admin-action.js';
 import { showClients } from '../models/admin-action.js';
+import { updateUserClient } from '../models/admin-action.js';
 
 
 class AdminController{
@@ -42,6 +43,17 @@ class AdminController{
 
       return res.json({ clients })
 
+    }
+
+    async userUpdate(req, res){
+
+      const clientId = req.params.clientId;
+      const { user_id } = req.body
+
+      const newUser = await updateUserClient(user_id, clientId)
+
+      return res.json({newUser})
+      
     }
     
 }

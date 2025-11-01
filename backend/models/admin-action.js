@@ -77,3 +77,20 @@ export async function showClients(user_id) {
 
     return res.rows;
 }
+
+export async function updateUserClient(user_id, clientId) {
+    
+    const res = await pool.query(
+        `UPDATE clients SET user_id = $1 WHERE id = $2`,
+        [user_id, clientId]
+      );
+
+    return res.rows;
+}
+
+
+
+
+
+
+
