@@ -35,28 +35,33 @@ router.post('/import-clients', authMiddleware, upload.single('file'), async (req
 
         for (let cliente of filtrados) {
             const query = `
-              INSERT INTO clients (nome, codigo, fone, grupo_codigo, nome_grupo, user_id, email, cnpj, status)
-              VALUES ($1, $2, $3, $4, $5, $6, $7, $8, 'Vazio')
-              ON CONFLICT (cnpj, user_id) 
-              DO UPDATE SET 
-                nome = EXCLUDED.nome,
-                codigo = EXCLUDED.codigo,
-                fone = EXCLUDED.fone,
-                grupo_codigo = EXCLUDED.grupo_codigo,
-                nome_grupo = EXCLUDED.nome_grupo,
-                email = EXCLUDED.email,
-                status = 'Vazio'
-            `
-            const values = [
-              cliente.nome,
-              cliente.codigo,
-              cliente.fone,
-              cliente.grupo_codigo,
-              cliente.nome_grupo,
-              cliente.user_id,
-              cliente.email,
-              cliente.cnpj
-            ]
+              INSERT INTO clients 
+              (nome, codigo, fone, grupo_codigo, nome_grupo, user_id, email, cnpj, status, meses_inativo)
+            VALUES 
+              ($1,   $2,     $3,   $4,          $5,         $6,      $7,    $8,    'Vazio', $9)
+            ON CONFLICT (cnpj, user_id) 
+            DO UPDATE SET 
+              nome = EXCLUDED.nome,
+              codigo = EXCLUDED.codigo,
+              fone = EXCLUDED.fone,
+              grupo_codigo = EXCLUDED.grupo_codigo,
+              nome_grupo = EXCLUDED.nome_grupo,
+              email = EXCLUDED.email,
+              meses_inativo = EXCLUDED.meses_inativo,
+              status = 'Vazio'
+          `;
+
+          const values = [
+            cliente.nome,
+            cliente.codigo,
+            cliente.fone,
+            cliente.grupo_codigo,
+            cliente.nome_grupo,
+            cliente.user_id,
+            cliente.email,
+            cliente.cnpj,
+            cliente.meses_inativo
+          ];
 
   await pool.query(query, values)
 }

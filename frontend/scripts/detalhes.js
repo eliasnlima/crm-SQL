@@ -37,12 +37,14 @@ async function carregarCliente(clientId, token) {
 
     const data = await res.json()
 
+    console.log(data)
     document.getElementById('cliente-nome').innerText = `${data.client.codigo} - ${data.client.nome}`
     document.getElementById('cliente-cnpj').innerText = `CNPJ: ${formatarCNPJ(data.client.cnpj)}`
     document.getElementById('cliente-email').innerText = `Email: ${data.client.email}`
     document.getElementById('cliente-telefone').innerText = `Telefone: ${formatarTelefone(data.client.fone)}`
     document.getElementById('status').value = data.client.status
-     document.getElementById('interacao').value = data.client.prox_int
+    document.getElementById('cliente-meses').innerText = `Meses sem compra: ${data.client.meses_inativo}`
+    document.getElementById('interacao').value = data.client.prox_int
   ? new Date(data.client.prox_int).toISOString().split('T')[0]
   : ''
     document.getElementById('cliente-grupo').innerText = `G.E: ${data.client.grupo_codigo}`
@@ -68,6 +70,9 @@ async function carregarGrupo(grupoCodigo, token) {
             return
         }
 
+        const menorMesesInativos = Math.min(
+            ...grupoClientes.map(c => c.meses_inativo ?? 0)
+        );
 
         const nomes = grupoClientes.map(c => `${c.codigo} - ${c.nome}`).join(`\n`)
         const status = grupoClientes[0].status
@@ -80,6 +85,8 @@ async function carregarGrupo(grupoCodigo, token) {
         document.getElementById('cliente-telefone').innerText = ""
         document.getElementById('cliente-grupo').innerText = ""
         document.getElementById('status').value = status
+        document.getElementById('cliente-meses').innerText =
+            `Meses sem compra: ${menorMesesInativos}`;
         document.getElementById('interacao').value = int
          ? new Date(int).toISOString().split('T')[0]
   : ''
