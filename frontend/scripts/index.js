@@ -1,3 +1,5 @@
+import { API_URL } from "../../backend/config/api.js";
+
 document.getElementById("login-form").addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -8,7 +10,7 @@ document.getElementById("login-form").addEventListener('submit', async (e) => {
 
     try {
         
-        const res = await fetch('http://localhost:3035/login', {
+        const res = await fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
