@@ -1,3 +1,5 @@
+import { API_URL } from "../../backend/config/api.js";
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const token = localStorage.getItem('token')
@@ -17,7 +19,7 @@ let todosClients = []
 async function showClients(token){
     
     try{
-    const res = await fetch('http://localhost:3035/clients', {
+    const res = await fetch(`${API_URL}/clients`, {
         method: 'GET',
         headers: {
             'authorization': 'Bearer ' + token
