@@ -1,3 +1,5 @@
+import { API_URL } from "../../backend/config/api.js";
+
 const listaUsuarios = document.getElementById("users");
 const inputBusca = document.getElementById("search-user");
 const btnAtualizar = document.getElementById("atualizar-btn");
@@ -10,7 +12,7 @@ async function carregarUsuarios() {
   const token = localStorage.getItem("token");
 
   try {
-    const res = await fetch("http://localhost:3035/admin/users", {
+    const res = await fetch(`${API_URL}/admin/users`, {
       headers: {
         "Authorization": `Bearer ${token}`
       }

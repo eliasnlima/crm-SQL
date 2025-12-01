@@ -1,3 +1,5 @@
+import { API_URL } from "../../backend/config/api.js";
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const token = localStorage.getItem('token')
@@ -28,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function carregarCliente(clientId, token) {
     
     try{
-        const res = await fetch(`http://localhost:3035/client/${clientId}`, {
+        const res = await fetch(`${API_URL}/client/${clientId}`, {
         method: 'GET',
         headers: {
             'authorization' : 'Bearer ' + token
@@ -58,7 +60,7 @@ async function carregarCliente(clientId, token) {
 
 async function carregarGrupo(grupoCodigo, token) {
     try {
-        const res = await fetch(`http://localhost:3035/clients/${grupoCodigo}`, {
+        const res = await fetch(`${API_URL}/clients/${grupoCodigo}`, {
             headers: { 'authorization': 'Bearer ' + token }
         })
 
@@ -113,7 +115,7 @@ async function cadastra(client_id, token) {
     document.getElementById('modal-msg').innerHTML = "Salvando, por favor aguarde..."
     cadastraAction.disabled = true
 
-    const res = await fetch(`http://localhost:3035/action`, {
+    const res = await fetch(`${API_URL}/action`, {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json',
@@ -153,7 +155,7 @@ async function cadastraGrupo(grupo, token) {
     cadastraAction.disabled = true
 
 
-    const res = await fetch(`http://localhost:3035/action/${grupo}`, {
+    const res = await fetch(`${API_URL}/action/${grupo}`, {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json',
@@ -200,7 +202,7 @@ async function showActions(clientId, token) {
     const lista = document.getElementById('acoes')
     lista.innerHTML = ""
 
-    const res = await fetch(`http://localhost:3035/client/${clientId}/actions`, {
+    const res = await fetch(`${API_URL}/client/${clientId}/actions`, {
         method: 'GET',
         headers: {
             'authorization' : 'Bearer ' + token
@@ -237,7 +239,7 @@ async function showActionsGrupo(grupo, token) {
     const lista = document.getElementById('acoes')
     lista.innerHTML = ""
 
-    const res = await fetch(`http://localhost:3035/action/${grupo}`, {
+    const res = await fetch(`${API_URL}/action/${grupo}`, {
         method: 'GET',
         headers: {
             'authorization' : 'Bearer ' + token
@@ -289,7 +291,7 @@ async function statusClient(clientId, token){
 
     const status = e.target.value
 
-    const res = await fetch(`http://localhost:3035/clientStatus/${clientId}`, {
+    const res = await fetch(`${API_URL}/clientStatus/${clientId}`, {
         method: 'PUT',
         headers: {
             'authorization' : 'Bearer ' + token,
@@ -311,7 +313,7 @@ async function statusGrupo(grupo, token){
 
     const status = e.target.value
 
-    const res = await fetch(`http://localhost:3035/groupStatus/${grupo}`, {
+    const res = await fetch(`${API_URL}/groupStatus/${grupo}`, {
         method: 'PUT',
         headers: {
             'authorization' : 'Bearer ' + token,
@@ -333,7 +335,7 @@ async function proxInt(token, clientId) {
 
     const proxInt = e.target.value
 
-    const res = await fetch(`http://localhost:3035/proxInt/${clientId}`, {
+    const res = await fetch(`${API_URL}/proxInt/${clientId}`, {
         method: 'PUT',
         headers: {
             'authorization' : 'Bearer ' + token,
@@ -357,7 +359,7 @@ async function proxIntGrupo(token, grupo) {
 
     const proxInt = e.target.value
 
-    const res = await fetch(`http://localhost:3035/proxIntG/${grupo}`, {
+    const res = await fetch(`${API_URL}/proxIntG/${grupo}`, {
         method: 'PUT',
         headers: {
             'authorization' : 'Bearer ' + token,

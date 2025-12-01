@@ -1,3 +1,5 @@
+   import { API_URL } from "../../backend/config/api.js";
+   
    const popup = document.getElementById('popup');
     const closePopup = document.getElementById('close-popup');
     const editForm = document.getElementById('edit-client-form');
@@ -33,7 +35,7 @@ let todosClients = []
 async function showClients(userId, token){
     
     try{
-    const res = await fetch(`http://localhost:3035/admin/user/${userId}/clients`, { 
+    const res = await fetch(`${API_URL}/admin/user/${userId}/clients`, { 
         method: 'GET',
         headers: {
             'authorization': 'Bearer ' + token
@@ -149,7 +151,7 @@ function formatarTelefone(telefone) {
   currentClientId = client; // Mantém referência íntegra (grupo ou cliente)
 
   // carregar vendedores no select
-  const res = await fetch(`http://localhost:3035/admin/users`, {
+  const res = await fetch(`${API_URL}/admin/users`, {
     headers: { authorization: 'Bearer ' + token }
   });
   const data = await res.json();
@@ -187,10 +189,10 @@ editForm.addEventListener("submit", async (e) => {
     let body = { user_id: newUserId };
 
     if (isGrupo) {
-      url = `http://localhost:3035/admin/groups/${grupo}`;
+      url = `${API_URL}/admin/groups/${grupo}`;
       
     } else {
-      url = `http://localhost:3035/admin/clients/${currentClientId.id}`;
+      url = `${API_URL}/admin/clients/${currentClientId.id}`;
       body.nome = editNome.value;
     }
 

@@ -1,3 +1,5 @@
+import { API_URL } from "../../backend/config/api.js";
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const token = localStorage.getItem('token')
@@ -36,7 +38,7 @@ async function carregaUser(id, token) {
     const filtro = document.getElementById('data').value
 
     try{
-        const res = await fetch(`http://localhost:3035/admin/user/${id}`, {
+        const res = await fetch(`${API_URL}/admin/user/${id}`, {
             method: 'POST',
             headers:{
                 'authorization' : 'Bearer ' + token,
@@ -77,7 +79,7 @@ async function filtrarSemAcoes(id, token) {
 
   try {
     // Faz a requisição para o back-end
-    const res = await fetch(`http://localhost:3035/admin/user/${id}/actionNull`, {
+    const res = await fetch(`${API_URL}/admin/user/${id}/actionNull`, {
       method: 'POST',
       headers: {
         'authorization': 'Bearer ' + token,

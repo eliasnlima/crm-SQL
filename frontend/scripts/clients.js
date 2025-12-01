@@ -124,7 +124,7 @@ cadastrarBtn.addEventListener('click', async () => {
 
     try{
 
-        const res = await fetch('http://localhost:3035/client', {
+        const res = await fetch(`${API_URL}/client`, {
             method: 'POST',
             headers: {
                 'Content-Type' : 'application/json',
@@ -278,7 +278,7 @@ async function importClient(token) {
     e.preventDefault()
     const formData = new FormData(e.target)
     
-    const response = await fetch('http://localhost:3035/import-clients', {
+    const response = await fetch(`${API_URL}/import-clients`, {
       method: 'POST',
       headers: {
         'authorization' : 'Bearer ' + token
