@@ -1,4 +1,4 @@
-import { API_URL } from "../config/api";
+   import { API_URL } from "../config/api.js";
 
 const listaUsuarios = document.getElementById("users");
 const inputBusca = document.getElementById("search-user");
