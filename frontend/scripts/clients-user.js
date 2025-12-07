@@ -1,4 +1,4 @@
-   import { API_URL } from "../../backend/config/api.js";
+   import { API_URL } from "../config/api.js";
    
    const popup = document.getElementById('popup');
     const closePopup = document.getElementById('close-popup');
